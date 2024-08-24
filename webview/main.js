@@ -27,13 +27,13 @@ function appendOutput(style) {
             t.classList.add(style);
             t.appendChild(document.createTextNode(lines[i]));
 
-            output.appendChild(t);
-            output.appendChild(document.createElement("br"));
-            t.scrollIntoView({
-                behavior: "smooth",
-                block: "end",
-                inline: "nearest",
-            }); /*smooth scrolling is experimental according to MDN*/
+            // output.appendChild(t);
+            // output.appendChild(document.createElement("br"));
+            // t.scrollIntoView({
+            //     behavior: "smooth",
+            //     block: "end",
+            //     inline: "nearest",
+            // }); /*smooth scrolling is experimental according to MDN*/
         }
     };
 }
@@ -59,6 +59,10 @@ function getMilliseconds() {
 const canvas = document.getElementById("screen");
 const doom_screen_width = 320 * 2;
 const doom_screen_height = 200 * 2;
+
+canvas.addEventListener("blur", () => {
+    canvas.focus();
+});
 
 /*printing stats*/
 const fps_stats = document.getElementById("fps_stats");
@@ -170,6 +174,7 @@ WebAssembly.instantiateStreaming(fetch(doomUri), importObject).then(
             (event) => {
                 keyDown(doomKeyCode(event));
                 event.preventDefault();
+                event.stopPropagation();
             },
             false,
         );
@@ -178,29 +183,11 @@ WebAssembly.instantiateStreaming(fetch(doomUri), importObject).then(
             (event) => {
                 keyUp(doomKeyCode(event));
                 event.preventDefault();
+                event.stopPropagation();
             },
             false,
         );
 
-        /*mobile touch input*/
-        // biome-ignore lint/complexity/noForEach: <explanation>
-        [
-            ["enterButton", 13],
-            ["leftButton", 0xac],
-            ["rightButton", 0xae],
-            ["upButton", 0xad],
-            ["downButton", 0xaf],
-            ["ctrlButton", 0x80 + 0x1d],
-            ["spaceButton", 32],
-            ["altButton", 0x80 + 0x38],
-        ].forEach(([elementID, keyCode]) => {
-            console.log(`${elementID} for ${keyCode}`);
-            const button = document.getElementById(elementID);
-            //button.addEventListener("click", () => {keyDown(keyCode); keyUp(keyCode)} );
-            button.addEventListener("touchstart", () => keyDown(keyCode));
-            button.addEventListener("touchend", () => keyUp(keyCode));
-            button.addEventListener("touchcancel", () => keyUp(keyCode));
-        });
 
         /*hint that the canvas should have focus to capute keyboard events*/
         const focushint = document.getElementById("focushint");

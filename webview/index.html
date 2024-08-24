@@ -5,6 +5,7 @@
 <head>
   <meta charset="utf-8">
   <title>DooM</title>
+  <link rel="stylesheet" href="./index.css">
   %CSP_SOURCE%
 </head>
 
@@ -13,13 +14,13 @@
 
   <p id="focushint"></p>
 
-  <p>Use <button id="enterButton">&#x23CE;</button> to start the game,
-    arrow keys <button id="leftButton">&#x2190;</button> <button id="upButton">&#x2191;</button> <button
-      id="downButton">&#x2193;</button> <button id="rightButton">&#x2192;</button> to move,
-    <button id="ctrlButton">ctrl</button> to shoot,
-    spacebar <button id="spaceButton">&nbsp;&nbsp;&nbsp;&nbsp;</button> to open gates,
-    <button id="altButton">alt</button> and arrow keys to strafe (if your browser does not handle these keys otherwise).
-    On mobile (and mobile only) touch the buttons above. Yeah, I'm not good a UX design.
+  <p>
+    Use <span class="key">&#x23CE;</span> to start the game,
+    arrow keys <span class="key">W</span> <span class="key">A</span> <span class="key">S</span>
+    <span class="key" id="rightButton">D</span> (or arrows) to move,
+    <span class="key" id="ctrlButton">Ctrl</span> to shoot,
+    spacebar <span class="key" id="spaceButton">space</span> to open gates,
+    <span class="key" id="altButton">Alt</span> and arrow keys to strafe
   </p>
 
   <div class="container">
@@ -30,7 +31,7 @@
     </div>
   </div>
 
-  <div id="output"></div>
+  <!-- <div id="output"></div> -->
 
   gettmilliseconds calls per second: <span id="getmsps_stats">0</span> Total getmilliseconds calls: <span
     id="getms_stats">0</span><br>
