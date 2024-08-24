@@ -1,7 +1,7 @@
 {
   "name": "vscode-doom",
   "displayName": "vscode-doom",
-  "description": "Because if something exists then it runs DOOM",
+  "description": "Because if something exists, then it runs DOOM",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.92.0"
@@ -9,6 +9,11 @@
   "categories": [
     "Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArthurLobopro/vscode-doom"
+  },
+  "publisher": "ArthurLobo",
   "activationEvents": ["onStartupFinished"],
   "main": "./dist/extension.js",
   "contributes": {
