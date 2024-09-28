@@ -1,4 +1,4 @@
-# vscode-doom 
+# VSCode DOOM
 
 BECAUSE IF SOMETHING EXISTS, THEN IT RUNS DOOM.
 

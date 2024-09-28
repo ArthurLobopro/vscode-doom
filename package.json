@@ -1,6 +1,6 @@
 {
   "name": "vscode-doom",
-  "displayName": "vscode-doom",
+  "displayName": "VSCode DOOM",
   "description": "Because if something exists, then it runs DOOM",
   "version": "1.0.0",
   "engines": {
